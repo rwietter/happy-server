@@ -11,7 +11,11 @@ import { Routes } from './routes';
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://happy-srv.herokuapp.com/',
+  }),
+);
 app.use(express.json());
 app.use(Routes);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
