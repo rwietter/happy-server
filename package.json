@@ -30,9 +30,14 @@
 		"ts-node-dev": "^1.0.0-pre.63",
 		"typescript": "^4.0.3"
 	},
+	"postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src",
 	"scripts": {
 		"dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
 		"typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-		"heroku-postbuild": "npm run build"
+		"heroku-postbuild": "npm run build",
+		"start": "node dist/index.js",
+		"postinstall": "tsc",
+		"watch-node": "nodemon dist/index.js",
+		"watch-ts": "tsc -w"
 	}
 }

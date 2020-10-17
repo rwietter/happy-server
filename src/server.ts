@@ -11,15 +11,7 @@ import { Routes } from './routes';
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(cors());
-
-app.all('https://happy-srv.herokuapp.com', (req, resp, next) => {
-  const origin = req.get('origin');
-  resp.header('Access-Control-Allow-Origin', origin);
-  resp.header('Access-Control-Allow-Headers', 'X-Requested-With');
-  resp.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+app.use(cors({ origin: 'https://happy-srv.herokuapp.com/' }));
 
 app.use(express.json());
 app.use(Routes);
